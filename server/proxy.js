@@ -1,4 +1,4 @@
-import { state, getProvider, bumpStats, bumpFailover, markResult, bumpTokens, persistImmediate } from './store.js'
+import { state, getProvider, bumpStats, bumpFailover, markResult, bumpTokens, persist, persistImmediate } from './store.js'
 
 function extractTokenCount(usage) {
   if (!usage) return null
