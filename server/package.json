@@ -1,0 +1,13 @@
+{
+  "name": "ai-gateway-server",
+  "version": "1.0.0",
+  "description": "AI 中转站后端服务",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

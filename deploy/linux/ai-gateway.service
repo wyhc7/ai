@@ -1,0 +1,27 @@
+[Unit]
+Description=AI Gateway - 自托管多平台 AI 中转站
+Documentation=https://github.com/wyhc7/api
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ai-gateway
+Group=ai-gateway
+WorkingDirectory=@APP_DIR@
+Environment=NODE_ENV=production
+Environment=PORT=@PORT@
+Environment=DATA_DIR=@APP_DIR@/data
+ExecStart=@NODE_BIN@ @APP_DIR@/server/index.js
+Restart=on-failure
+RestartSec=3
+# 基础加固
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+# 资源限制
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

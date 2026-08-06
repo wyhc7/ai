@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  AI Gateway launchd 服务（生产模式，单进程托管界面 + API）
+  由 deploy/macos/install.sh 生成实际配置（替换 APP_DIR / PORT / NODE_BIN 占位符）
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.ai-gateway.server</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>@NODE_BIN@</string>
+    <string>@APP_DIR@/server/index.js</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>@APP_DIR@</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>NODE_ENV</key>
+    <string>production</string>
+    <key>PORT</key>
+    <string>@PORT@</string>
+    <key>DATA_DIR</key>
+    <string>@APP_DIR@/data</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <dict>
+    <key>SuccessfulExit</key>
+    <false/>
+  </dict>
+
+  <key>ThrottleInterval</key>
+  <integer>5</integer>
+
+  <key>StandardOutPath</key>
+  <string>@APP_DIR@/logs/stdout.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>@APP_DIR@/logs/stderr.log</string>
+</dict>
+</plist>

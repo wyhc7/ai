@@ -1,0 +1,10 @@
+**/node_modules
+**/dist
+**/data
+.git
+.gitignore
+*.log
+.DS_Store
+README.md
+docs
+deploy
